@@ -1,0 +1,20 @@
+
+GET localhost:8080/profile/3
+
+###
+
+GET localhost:8080/users
+
+###
+
+GET localhost:8080/profile/5
+
+###
+
+PUT localhost:8080/profile/5
+Content-Type: application/json
+{
+    "email":"marsello@mail.ru",
+    "firstName":"",
+    "lastName":""
+}
