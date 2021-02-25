@@ -1,3 +1,3 @@
 # Информатика
-№ Spring Framework
+## Spring Framework
 Второй курс, второй семестр 
