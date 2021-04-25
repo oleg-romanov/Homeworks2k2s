@@ -47,17 +47,49 @@
             alert("Fail")
         });
     }
+
+    function sendFile() {
+        // данные для отправки
+        let formData = new FormData();
+        // забрал файл из input
+        let files = ($('#file'))[0]['files'];
+        // добавляю файл в formData
+        [].forEach.call(files, function (file, i, files) {
+            formData.append("file", file);
+        });
+
+        $.ajax({
+            type: "POST",
+            url: "/${userDto.id}/files",
+            data: formData,
+            processData: false,
+            contentType: false
+        })
+            .done(function (response) {
+                let fileUrl = 'http://localhost:8080/files/' + response
+                $('#photo').attr('src', fileUrl)
+            })
+            .fail(function () {
+                alert('Error')
+            });
+    }
+
+
 </script>
+
+
 
 <div id="settings" class="container">
     <h1>Настройки</h1>
 
-    <div class="image">
-        <img style="width: 400px; border-radius: 40px; margin: 40px 0;" alt="avatar" src="/images/<%=dto.getImageId()%>"/>
-        <form action="/image-upload?profile_id=<%=dto.getId()%>" method="post" enctype="multipart/form-data">
-            <input name="image" type="file" accept="image/jpeg,image/png" required>
-            <input type="submit">
-        </form>
+    <div>
+        <img id="photo" style="width: 400px; border-radius: 40px; margin: 40px 0;" alt="avatar" src="/files/${userDto.imageName}"/>
+        <input type="file" multiple='multiple' id="file" name="file" placeholder="Имя файла..."/>
+        <button onclick="sendFile()">
+            Загрузить файл
+        </button>
+        <input type="hidden" id="file_hidden">
+        <div class="filename"></div>
     </div>
 
     <div class="email">

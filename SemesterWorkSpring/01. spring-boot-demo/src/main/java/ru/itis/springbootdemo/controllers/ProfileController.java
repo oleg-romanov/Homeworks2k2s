@@ -2,11 +2,17 @@ package ru.itis.springbootdemo.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.itis.springbootdemo.dto.UserDto;
+import ru.itis.springbootdemo.models.User;
+import ru.itis.springbootdemo.repositories.UsersRepository;
+import ru.itis.springbootdemo.security.details.UserDetailsImpl;
 import ru.itis.springbootdemo.services.UsersService;
+
+import java.util.Optional;
 
 @Controller
 public class ProfileController {
@@ -14,9 +20,13 @@ public class ProfileController {
     @Autowired
     private UsersService usersService;
 
-    @GetMapping("/profile/{user-id}")
-    public String getProfilePage(@PathVariable("user-id") Long userId, Model model) {
-        UserDto dto = usersService.getUserById(userId);
+    @Autowired
+    private UsersRepository usersRepository;
+
+    @GetMapping("/profile")
+    public String getProfilePage(@AuthenticationPrincipal UserDetailsImpl userDetails, Model model) {
+        String email = userDetails.getUsername();
+        UserDto dto = usersService.getUserDto(email);
         model.addAttribute("userDto", dto);
         return "profile";
     }

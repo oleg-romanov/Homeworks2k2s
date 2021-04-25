@@ -7,13 +7,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-/**
- * 10.02.2021
- * spring-boot-demo
- *
- * @author Sidikov Marsel (First Software Engineering Platform)
- * @version v1.0
- */
 @Data
 @Builder
 @NoArgsConstructor
@@ -27,7 +20,15 @@ public class User {
     private String firstName;
     private String lastName;
     private String email;
+    private String phone;
     private String hashPassword;
-    private Long imageId;
+
+    @Column(name = "image_name")
+    private String imageName;
+
     private Boolean isAdmin;
+    private String confirmCode;
+
+    @Enumerated(value = EnumType.STRING)
+    private State state;
 }
