@@ -26,6 +26,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter implements WebMvcC
         http.authorizeRequests()
                 .antMatchers("/signUp").permitAll()// доступна всем
                 .antMatchers("/categoriesList/search").permitAll()
+                .antMatchers("/productsList/search").permitAll()
                 .antMatchers("/files/**").permitAll()
                 .antMatchers("/**").authenticated()
                 .antMatchers("/profile").authenticated()

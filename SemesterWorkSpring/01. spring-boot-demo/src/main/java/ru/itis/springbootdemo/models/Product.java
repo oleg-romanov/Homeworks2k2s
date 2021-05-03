@@ -20,5 +20,5 @@ public class Product  {
     private Long categoryId;
     private String description;
     @Column(name = "image_name")
-    private Long imageName;
+    private String imageName;
 }

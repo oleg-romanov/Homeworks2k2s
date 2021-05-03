@@ -6,9 +6,20 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Профиль</title>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
     <script src="/js/jquery.js"></script>
 </head>
 <body>
+
+<header>
+    <ul class="menu-main">
+        <li><a href="/">Главная</a> </li>
+        <li><a href="http://localhost/html/categories.html">Каталог</a></li>
+        <li><a href="/about">About</a></li>
+        <li><a href="/profile" class="current">Профиль</a></li>
+    </ul>
+</header>
+
 <script>
     function sendUser() {
         let email = $('#newEmail').val();

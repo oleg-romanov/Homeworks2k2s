@@ -20,4 +20,9 @@ Content-Type: application/json
 }
 
 ###
+
 GET http://localhost:8080/categoriesList/search?page=1&size=2
+
+###
+
+GET http://localhost:8080/categories/1/productsList/search?page=0&size=2
