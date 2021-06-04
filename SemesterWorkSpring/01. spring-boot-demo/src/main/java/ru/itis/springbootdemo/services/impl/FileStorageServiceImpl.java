@@ -34,7 +34,7 @@ public class FileStorageServiceImpl implements FileStorageService {
     public String storagePath;
 
     @Override
-    public String saveFile(MultipartFile uploadingFile, Long userId) {
+    public String saveFile(MultipartFile uploadingFile) {
         String storageName = UUID.randomUUID().toString() + "." +
                 FilenameUtils.getExtension(uploadingFile.getOriginalFilename());
 

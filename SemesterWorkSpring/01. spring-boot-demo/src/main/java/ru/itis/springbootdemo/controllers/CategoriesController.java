@@ -12,6 +12,7 @@ import ru.itis.springbootdemo.repositories.CategoriesRepository;
 import ru.itis.springbootdemo.repositories.ProductRepository;
 import ru.itis.springbootdemo.services.CategoriesService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,7 +34,19 @@ public class CategoriesController {
             Optional<Category> category = categoryRepository.findById(categoryId);
             List<Product> products = productRepository.findProductsByCategoryId(categoryId);
             category.ifPresent(value -> model.addAttribute("name", value.getName()));
-            model.addAttribute("products", products);
+            if (products.size() != 0) {
+                model.addAttribute("products", products);
+            } else {
+//                List<Product> productss = new ArrayList<>();
+//                productss.add(Product
+//                        .builder()
+//                        .categoryId(categoryId)
+//                        .build());
+//                model.addAttribute("products", productss);
+                model.addAttribute("error", "Ошибка, в этой категории еще нет товаров");
+                return "errorPage";
+            }
+
             return "products";
         }
         return "categories";

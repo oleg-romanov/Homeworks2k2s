@@ -6,6 +6,8 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="/js/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <link rel="stylesheet" type="text/css" href="../css/categories.css">
     <title>Document</title>
 </head>
 <body>
@@ -24,7 +26,7 @@
             <#list categories as categories>
                 <div class="category">
                     <div class="category-photo">
-                        <img style="width: 200px" src="/files/${categories.getImageName()}" alt="img"/>
+                        <img style="width: 200px; height: 200px" src="/files/${categories.getImageName()}" alt="img"/>
                     </div>
                     <a class="categoryName" href="/categories/${categories.getId()}">${categories.getName()}</a>
                 </div>

@@ -11,6 +11,12 @@ public class ProductsController {
     @Autowired
     private ProductsService productsService;
 
+//    @GetMapping("/products")
+//    public String getProductsPage() {
+//
+//        return "products";
+//    }
+
     @GetMapping("/categories/{categoryId}/productsList/search")
     @CrossOrigin(origins = "http://localhost:80")
     public ResponseEntity<ProductsPage> search(@RequestParam("size") Integer size,

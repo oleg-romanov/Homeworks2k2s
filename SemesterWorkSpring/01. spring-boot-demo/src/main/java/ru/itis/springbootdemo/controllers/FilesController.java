@@ -22,15 +22,15 @@ public class FilesController {
 
     @PostMapping("/{userId}/files")
     public ResponseEntity<String> fileUpload(@RequestParam("file") MultipartFile file, @PathVariable Long userId) {
-        String fileName = fileStorageService.saveFile(file, userId);
+        String fileName = fileStorageService.saveFile(file);
         UserDto userDto = usersService.getUserById(userId);
         userDto.setImageName(fileName);
         usersService.updateUser(userId, userDto);
         return ResponseEntity.ok().body(fileName);
     }
 
-    @GetMapping("/files/{file-name:.+}")
     @CrossOrigin(origins = "http://localhost:80")
+    @GetMapping("/files/{file-name:.+}")
     public void getFile(@PathVariable("file-name") String fileName, HttpServletResponse response) {
         fileStorageService.writeFileToResponse(fileName, response);
     }

@@ -21,7 +21,7 @@ import static ru.itis.springbootdemo.dto.ProductDto.from;
 public class ProductsServiceImpl implements ProductsService {
 
     @Autowired
-    private ProductsRepository servicesRepository;
+    private ProductsRepository productsRepository;
 
     @Override
     public ProductsPage search(Integer size, Integer page, String query, String sortParameter, String directionParameter, Long categoryId) {
@@ -41,7 +41,7 @@ public class ProductsServiceImpl implements ProductsService {
         }
 
         PageRequest pageRequest = PageRequest.of(page, size, sort);
-        Page<Product> productsPage = servicesRepository.search(query, pageRequest, categoryId);
+        Page<Product> productsPage = productsRepository.search(query, pageRequest, categoryId);
         return ProductsPage.builder()
                 .pagesCount(productsPage.getTotalPages())
                 .products(ProductDto.from(productsPage.getContent()))

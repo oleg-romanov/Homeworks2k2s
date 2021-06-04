@@ -14,7 +14,8 @@
 <header>
     <ul class="menu-main">
         <li><a href="/">Главная</a> </li>
-        <li><a href="http://localhost/html/categories.html">Каталог</a></li>
+<#--        <li><a href="http://localhost/html/categories.html">Каталог</a></li>-->
+        <li><a href="/categories">Каталог</a></li>
         <li><a href="/about">About</a></li>
         <li><a href="/profile" class="current">Профиль</a></li>
     </ul>
@@ -122,6 +123,7 @@
         <input type="text" id="newLastName" placeholder="Обновленная фамилия">
     </div>
     <button onclick="sendUser()">Изменить</button>
+    <a href="http://localhost/html/users.html">чекнуть юзеров</a>
 </div>
 </body>
 </html>
